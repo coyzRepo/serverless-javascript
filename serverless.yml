@@ -1,0 +1,29 @@
+service: aws-node-serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  region: eu-west-1
+
+plugins:
+  - serverless-offline
+
+functions:
+  hello-world:
+    handler: src/hello.handler
+    events:
+      - http:
+          path: hello-world
+          method: get
+  create-token:
+    handler: src/createToken.handler
+    events:
+      - http:
+          path: create-token
+          method: post
+  check-user:
+    handler: src/checkUser.handler
+    events:
+      - http:
+          path: check-user
+          method: post
